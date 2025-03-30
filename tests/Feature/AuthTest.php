@@ -9,6 +9,7 @@ use App\Models\User;
 
 class AuthTest extends TestCase
 {
+    //use RefreshDatabase;
     /**
      * A basic feature test example.
      */

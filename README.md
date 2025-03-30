@@ -1,7 +1,7 @@
    # BackEndTest
 
    ## Setup Instructions
-   1. Clone the repo: `git clone [repo-url]`
+   1. Clone the repo: `git clone [https://github.com/MarioAndra/Backend-test.git]`
    2. Install dependencies: `composer install`
    3. Copy `.env.example` to `.env`: `cp .env.example .env`
    4. Generate app key: `php artisan key:generate`
@@ -54,6 +54,11 @@
    - User registration (valid/invalid data)
    - Login & token generation
    - Protected route access
+
+   ## To Test Phone validated via AbstractAPI in case (Failure)
+   Login using this account :
+    phone=0999999999
+    password=password
 
    ## Postman Collection (Optional)
    Import `Laravel_Test.postman_collection.json` (attached) for endpoint testing.
