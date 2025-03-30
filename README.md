@@ -60,8 +60,11 @@
     phone=0999999999
     password=password
 
-   ## Postman Collection (Optional)
-   Import `Laravel_Test.postman_collection.json` (attached) for endpoint testing.
+   ## Postman Collection 
+   Import `BackEnd-Test.postman_collection.json` (attached) for endpoint testing.
+
+   ## URL Collection 
+   https://documenter.getpostman.com/view/30811084/2sB2cPk6B1
    
 
       

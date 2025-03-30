@@ -10,9 +10,12 @@ use App\Http\Requests\{
     UpdateCompanyRequest
 };
 use App\Traits\Responses;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\{
+    Auth,
+    DB
+};
 use App\Services\PhoneValidationService;
-
+use Exception;
 
 class CompaniesController extends Controller
 {
@@ -22,7 +25,7 @@ class CompaniesController extends Controller
 
     public function index()
     {
-        return $this->indexOrShowResponse('Done successfully...!',Company::select('id', 'name')->get());
+        return $this->indexOrShowResponse('Done successfully...!', Company::select('id', 'name')->get());
     }
 
 
@@ -42,8 +45,8 @@ class CompaniesController extends Controller
 
     public function show(string $id)
     {
-        $company = Company::with(['user', 'country', 'inquiries'])->FindOrFail($id);
-        return $this->indexOrShowResponse($company, 'done successfully....!');
+        $company = Company::with(['user', 'country'])->FindOrFail($id);
+        return $this->indexOrShowResponse('done successfully....!', $company);
     }
 
 
@@ -59,8 +62,15 @@ class CompaniesController extends Controller
 
     public function destroy(string $id)
     {
-        $company = Company::FindOrFail($id);
-        $company->delete();
-        return $this->sudResponse('company deleted successfully...!');
+        DB::beginTransaction();
+        try {
+            $company = Company::FindOrFail($id);
+            $company->delete();
+            DB::commit();
+            return $this->sudResponse('company deleted successfully...!');
+        } catch (Exception $e) {
+            DB::rollBack();
+            $this->sudResponse($e, 500);
+        }
     }
 }

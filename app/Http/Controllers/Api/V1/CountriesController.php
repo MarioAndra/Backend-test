@@ -13,6 +13,6 @@ class CountriesController extends Controller
 
     public function index()
     {
-        return $this->indexOrShowResponse('done successfully...!', Country::get()->all());
+        return $this->indexOrShowResponse('done successfully...!', Country::select('id','name')->get());
     }
 }
