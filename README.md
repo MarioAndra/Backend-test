@@ -45,7 +45,7 @@
    - **List countries:** `GET /api/countries` 
 
    ### Inquiries (Frontend)
-   - Access `/login` to authenticate.  
+   - Access `/login`or `/register` to authenticate.  
    - Submit inquiries at `/inquiries` with a company selection.  
 
    ## Running Tests
