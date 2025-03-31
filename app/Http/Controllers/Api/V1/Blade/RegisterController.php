@@ -20,8 +20,8 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
 
-       try {
-            $user=User::create($request->validated());
+        try {
+            $user = User::create($request->validated());
             Auth::login($user);
             return  redirect()->intended('/inquiries')
                 ->with('success', 'Register done.!');
@@ -29,7 +29,7 @@ class RegisterController extends Controller
             Log::error('Error registering user web: ' . $e->getMessage());
             return back()
                 ->withInput()
-                ->withErrors(['error'=>'somthing goes wrong....please try agian']);
+                ->withErrors(['error' => 'somthing goes wrong....please try agian']);
         }
     }
 }
