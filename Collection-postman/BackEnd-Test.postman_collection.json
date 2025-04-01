@@ -495,7 +495,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "3|rghfgmCKXXvFrM0cBe0uisBMsGXw9B3PmerH6YOA7e9d0a0f",
+									"value": "1|3XtKfcIzLnhJFH8STkYEiPlxT4b4m7A1vtNDeaAJfbc748e2",
 									"type": "string"
 								}
 							]
@@ -554,11 +554,11 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 30 Mar 2025 15:52:26 GMT"
+									"value": "Tue, 01 Apr 2025 15:39:53 GMT"
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 30 Mar 2025 15:52:26 GMT"
+									"value": "Tue, 01 Apr 2025 15:39:53 GMT"
 								},
 								{
 									"key": "Connection",
@@ -582,7 +582,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"Done successfully...!\": [\n        {\n            \"id\": 1,\n            \"name\": \"Test 1 name\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Test 2 name\"\n        }\n    ]\n}"
+							"body": "{\n    \"Done successfully...!\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"Test 1 name\",\n                \"phone\": \"0117811111\",\n                \"email\": \"example@gmail.com\",\n                \"country_id\": 1,\n                \"industry_id\": 2,\n                \"user_id\": 2,\n                \"created_from\": \"منذ 16 دقيقة\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Test 2 name\",\n                \"phone\": \"0117822222\",\n                \"email\": \"Test@gmail.com\",\n                \"country_id\": 2,\n                \"industry_id\": 1,\n                \"user_id\": 1,\n                \"created_from\": \"منذ 16 دقيقة\"\n            }\n        ],\n        \"first_page_url\": \"http://localhost:8000/api/companies?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://localhost:8000/api/companies?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://localhost:8000/api/companies?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://localhost:8000/api/companies\",\n        \"per_page\": 5,\n        \"prev_page_url\": null,\n        \"to\": 2,\n        \"total\": 2\n    }\n}"
 						}
 					]
 				},

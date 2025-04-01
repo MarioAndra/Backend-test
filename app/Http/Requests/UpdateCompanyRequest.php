@@ -24,7 +24,7 @@ class UpdateCompanyRequest extends FormRequest
         return [
             'name' => ['nullable'],
             'phone' => ['nullable'],
-            'industry' => ['nullable'],
+            'industry_id' => ['nullable', 'exists:industries,id'],
             'country_id' => ['nullable', 'exists:countries,id']
         ];
     }

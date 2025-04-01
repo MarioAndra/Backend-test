@@ -14,24 +14,33 @@ use Illuminate\Support\Facades\{
     Auth,
     DB
 };
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Services\PhoneValidationService;
 use Exception;
 
 class CompaniesController extends Controller
 {
-    use Responses;
+    use Responses, AuthorizesRequests;
 
-    public function __construct(protected PhoneValidationService $validator) {}
+
+
+    public function __construct(protected PhoneValidationService $validator)
+    {
+        $this->authorizeResource(Company::class, 'company');
+    }
+
+
 
     public function index()
     {
-        return $this->indexOrShowResponse('Done successfully...!', Company::select('id', 'name')->get());
+        return $this->indexOrShowResponse('Done successfully...!', Company::paginate(5));
     }
 
 
 
     public function store(CreateCompanyRequest $request)
     {
+
         $user = Auth::user();
         if (!$this->validator->validatePhoneNumber($user->phone)) {
             return $this->sudResponse('Invalid phone number', 422);
@@ -43,34 +52,32 @@ class CompaniesController extends Controller
 
 
 
-    public function show(string $id)
+    public function show(Company $company)
     {
-        $company = Company::with(['user', 'country'])->FindOrFail($id);
-        return $this->indexOrShowResponse('done successfully....!', $company);
+
+        return $this->indexOrShowResponse('done successfully....!', $company->load(['user', 'country', 'industry']));
     }
 
 
 
 
-    public function update(UpdateCompanyRequest $request, string $id)
+    public function update(UpdateCompanyRequest $request, Company $company)
     {
-        $company = Company::FindOrFail($id);
         $company->update($request->all());
         return $this->sudResponse('Company updated successfully...!');
     }
 
 
-    public function destroy(string $id)
+    public function destroy(Company $company)
     {
         DB::beginTransaction();
         try {
-            $company = Company::FindOrFail($id);
             $company->delete();
             DB::commit();
             return $this->sudResponse('company deleted successfully...!');
         } catch (Exception $e) {
             DB::rollBack();
-            $this->sudResponse($e, 500);
+            $this->sudResponse($e->getMessage(), 500);
         }
     }
 }

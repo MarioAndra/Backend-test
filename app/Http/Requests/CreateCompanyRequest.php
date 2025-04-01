@@ -24,7 +24,7 @@ class CreateCompanyRequest extends FormRequest
         return [
             'name' => ['required'],
             'phone' => ['required'],
-            'industry' => ['required'],
+            'industry_id' => ['required', 'exists:industries,id'],
             'email' => ['required'],
             'country_id' => ['required', 'exists:countries,id']
         ];

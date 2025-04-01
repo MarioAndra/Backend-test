@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
-            $table->string('industry');
             $table->string('email');
             $table->foreignId('country_id')->constrained('countries')->onDelete('cascade');
+            $table->foreignId('industry_id')->constrained('industries')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
